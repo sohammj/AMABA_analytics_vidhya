@@ -1,5 +1,0 @@
-Approach: Blend of three regressors on lightly engineered features.
-Cleaning: unified Item_Fat_Content labels (LF/low fat/reg), marked non-consumables as "Non-Edible", filled Item_Weight from the same Item_Identifier, treated zero Item_Visibility as missing (item mean), added Outlet_Age and item frequency.
-Models: (1) Ridge with Outlet x Item_MRP (up to quadratic) interactions, (2) CatBoost with categorical outlet/item type, 3 seeds, (3) shallow regularised LightGBM, 3 seeds. Blend weights 0.5/0.3/0.2 chosen from 5-fold out-of-fold predictions.
-Finding: Item_MRP and Outlet_Identifier explain almost all learnable signal; richer features (visibility ratios, MRP ratios) increased CV error, so the final feature set is deliberately small to avoid overfitting.
-Validation: 5-fold CV RMSE ~1073.7 on train (Ridge 1074.0, CatBoost 1075.7, LGBM 1082.4). Public leaderboard score will differ.
